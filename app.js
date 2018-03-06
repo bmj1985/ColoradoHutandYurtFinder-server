@@ -1,14 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
+
 const app = express();
 
-const hutsAndYurts = require('./routes/hutsandyurts');
+const hutsandyurts = require('./routes/hutsandyurts');
 
-app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.use('/hutsandyurts', hutsAndYurts);
+app.use('/hutsandyurts', hutsandyurts);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -19,7 +18,8 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-  res.status(err.status || 500).json({
+  res.status(err.status || 500);
+  res.json({
     message: err.message,
     error: req.app.get('env') === 'development' ? err.stack : {}
   });
