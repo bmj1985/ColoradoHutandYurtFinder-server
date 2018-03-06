@@ -4,6 +4,7 @@
   "description": "Server side of Colorado Hut and Yurt Finder",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "npm test"
   },
   "repository": {
@@ -15,7 +16,8 @@
   "bugs": {
     "url": "https://github.com/bmj1985/ColoradoHutandYurtFinder-server/issues"
   },
-  "homepage": "https://github.com/bmj1985/ColoradoHutandYurtFinder-server#readme",
+  "homepage":
+    "https://github.com/bmj1985/ColoradoHutandYurtFinder-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
