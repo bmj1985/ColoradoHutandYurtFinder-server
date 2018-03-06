@@ -1,0 +1,26 @@
+{
+  "name": "coloradohutandyurtfinder-server",
+  "version": "1.0.0",
+  "description": "Server side of Colorado Hut and Yurt Finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmj1985/ColoradoHutandYurtFinder-server.git"
+  },
+  "author": "Brandon Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmj1985/ColoradoHutandYurtFinder-server/issues"
+  },
+  "homepage": "https://github.com/bmj1985/ColoradoHutandYurtFinder-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "knex": "^0.14.4",
+    "pg": "^7.4.1"
+  }
+}
