@@ -8,7 +8,9 @@ module.exports = {
     return database('hut');
   },
   read(id) {
-    return database('hut').where('id', id);
+    return database('hut')
+      .where('id', id)
+      .then(this.returnFirstItem);
   },
   create(hut) {
     return database('hut')
