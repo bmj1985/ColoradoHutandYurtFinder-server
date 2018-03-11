@@ -7,7 +7,7 @@ const app = express();
 const hutsandyurts = require('./routes/hutsandyurts');
 
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 app.use('/hutsandyurts', hutsandyurts);
 
