@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
 const hutsandyurts = require('./routes/hutsandyurts');
 
 app.use(bodyParser.json());
+app.use(cors);
 
 app.use('/hutsandyurts', hutsandyurts);
 
