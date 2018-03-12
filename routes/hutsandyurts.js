@@ -10,7 +10,7 @@ function isValidId(request, response, next) {
 }
 
 router.get('/huts', (request, response, next) => {
-  queries
+  hutQueries
     .listHuts()
     .then(hutsAndYurts => {
       response.json({ hutsAndYurts });
