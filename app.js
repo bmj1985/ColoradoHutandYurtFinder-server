@@ -9,7 +9,7 @@ const hutsandyurts = require('./routes/hutsandyurts');
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/hutsandyurts', hutsandyurts);
+app.use('/', hutsandyurts);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

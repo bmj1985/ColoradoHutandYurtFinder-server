@@ -1,20 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-const queries = require('../queries');
+const hutQueries = require('../queries/hutqueries');
+const userQueries = require('../queries/userqueries');
 
-router.get('/', (request, response, next) => {
+function isValidId(request, response, next) {
+  if (!isNaN(request.params.id)) return next();
+  next(new Error('Invalid ID'));
+}
+
+router.get('/huts', (request, response, next) => {
   queries
-    .list()
+    .listHuts()
     .then(hutsAndYurts => {
       response.json({ hutsAndYurts });
     })
     .catch(next);
 });
 
-router.get('/:id', (request, response, next) => {
-  queries
-    .read(request.params.id)
+router.get('/huts/:id', isValidId, (request, response, next) => {
+  hutQueries
+    .readHuts(request.params.id)
     .then(hut => {
       hut
         ? response.json({ hut })
@@ -23,27 +29,76 @@ router.get('/:id', (request, response, next) => {
     .catch(next);
 });
 
-router.post('/', (request, response, next) => {
-  queries
-    .create(request.body)
+router.post('/huts', (request, response, next) => {
+  hutQueries
+    .createHuts(request.body)
     .then(hut => {
       response.status(201).json({ hut });
     })
     .catch(next);
 });
 
-router.delete('/:id', (request, response, next) => {
-  queries
-    .delete(request.params.id)
+router.delete('/huts/:id', isValidId, (request, response, next) => {
+  hutQueries
+    .deleteHuts(request.params.id)
     .then(() => {
       response.status(204).json({ deleted: true });
     })
     .catch(next);
 });
 
-router.put('/:id', (request, response, next) => {
-  queries
-    .update(request.params.id, request.body)
+router.put('/huts/:id', isValidId, (request, response, next) => {
+  hutQueries
+    .updateHuts(request.params.id, request.body)
+    .then(hut => {
+      response.json({ hut });
+    })
+    .catch(next);
+});
+
+router.get('/users', (request, response, next) => {
+  userQueries
+    .listUsers()
+    .then(hutsAndYurts => {
+      response.json({ hutsAndYurts });
+    })
+    .catch(next);
+});
+
+router.get('/users/:id', isValidId, (request, response, next) => {
+  userQueries
+    .readUsers(request.params.id)
+    .then(hut => {
+      hut
+        ? response.json({
+            hut
+          })
+        : response.status(404).json({ message: 'Not found' });
+    })
+    .catch(next);
+});
+
+router.post('/users', (request, response, next) => {
+  userQueries
+    .createUsers(request.body)
+    .then(hut => {
+      response.status(201).json({ hut });
+    })
+    .catch(next);
+});
+
+router.delete('/users/:id', isValidId, (request, response, next) => {
+  userQueries
+    .deleteUsers(request.params.id)
+    .then(() => {
+      response.status(204).json({ deleted: true });
+    })
+    .catch(next);
+});
+
+router.put('/users/:id', isValidId, (request, response, next) => {
+  userQueries
+    .updateUsers(request.params.id, request.body)
     .then(hut => {
       response.json({ hut });
     })
