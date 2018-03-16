@@ -1,8 +1,9 @@
 require('dotenv').load();
+
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgresql:///api/v1/',
+    connection: 'postgresql:///hutsandyurts',
   },
   production: {
     client: 'pg',
