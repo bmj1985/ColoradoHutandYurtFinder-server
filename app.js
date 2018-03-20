@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.json({
     message: 'Welcome to the Colorado Huts and Yurts API',
   });
