@@ -1,3 +1,5 @@
+const hash = require('hash.js');
+
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex('user_account')
@@ -7,27 +9,27 @@ exports.seed = function (knex, Promise) {
       knex('user_account').insert([
         {
           id: 1,
-          user_name: 'development',
-          email: 'development@development.com',
-          password: 'development',
-          password_salt: 'none',
-          password_hash_algorithm: 'none',
+          user_name: hash.sha256().update('development').digest('hex'),
+          email: hash.sha256().update('development@development.com').digest('hex'),
+          password: hash.sha256().update('development').digest('hex'),
+          password_salt: hash.sha256().update('Wilderness is not a luxury but a necessity of the human spirit, and as vital to our lives as water and good bread. A civilization which destroys what little remains of the wild, the spare, the original, is cutting itself off from its origins and betraying the principle of civilization itself').digest('hex'),
+          password_hash_algorithm: 'SHA256',
         },
         {
           id: 2,
-          user_name: 'user',
-          email: 'user@user.com',
-          password: '7570ed453c77b471bb1f548ca4307aff26f49ac4',
-          password_salt: 'c6bb15467f367d9e6c027cac7a79ebabe7be6826',
-          password_hash_algorithm: 'MD5',
+          user_name: hash.sha256().update('development').digest('hex'),
+          email: hash.sha256().update('development@development.com').digest('hex'),
+          password: hash.sha256().update('development').digest('hex'),
+          password_salt: hash.sha256().update('Wilderness is not a luxury but a necessity of the human spirit, and as vital to our lives as water and good bread. A civilization which destroys what little remains of the wild, the spare, the original, is cutting itself off from its origins and betraying the principle of civilization itself').digest('hex'),
+          password_hash_algorithm: 'SHA256',
         },
         {
           id: 3,
-          user_name: 'administrator',
-          email: 'administrator@administrator.com',
-          password: 'c7b2f44f3550d3fd5265eacaad97ce0bf7d09f9a',
-          password_salt: 'c6bb15467f367d9e6c027cac7a79ebabe7be6826',
-          password_hash_algorithm: 'MD5',
+          user_name: hash.sha256().update('administrator').digest('hex'),
+          email: hash.sha256().update('administrator@administrator.com').digest('hex'),
+          password: hash.sha256().update('administrator').digest('hex'),
+          password_salt: hash.sha256().update('Wilderness is not a luxury but a necessity of the human spirit, and as vital to our lives as water and good bread. A civilization which destroys what little remains of the wild, the spare, the original, is cutting itself off from its origins and betraying the principle of civilization itself').digest('hex'),
+          password_hash_algorithm: 'SHA256',
         },
       ]))
     .then(() => knex.raw('ALTER SEQUENCE user_account_id_seq RESTART WITH 4;'));
